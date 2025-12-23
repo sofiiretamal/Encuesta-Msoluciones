@@ -288,21 +288,23 @@ for (let i = 1; i <= 10; i++) {
 async function enviar() {
   const btn = document.getElementById("btnEnviar");
 
-  // Evitar doble envío
   btn.disabled = true;
   btn.textContent = "Enviando…";
 
+  const inputs = document.querySelectorAll('input');
+  const textarea = document.querySelector('textarea');
+
   const data = {
-    fecha: document.querySelector('input[type="date"]').value,
-    empresa: document.querySelectorAll('input')[1].value,
-    nombre: document.querySelectorAll('input')[2].value,
-    cargo: document.querySelectorAll('input')[3].value,
+    fecha: inputs[0].value,
+    empresa: inputs[1].value,
+    nombre: inputs[2].value,
+    cargo: inputs[3].value,
     q1: getStars(0),
     q2: getStars(1),
     q3: getStars(2),
     q4: getStars(3),
     nps: document.querySelector('.nps .active')?.textContent || '',
-    comentarios: document.querySelector('textarea').value
+    comentarios: textarea.value
   };
 
   if (!data.empresa || !data.nombre) {
@@ -321,7 +323,19 @@ async function enviar() {
     });
 
     alert("Gracias por responder la encuesta");
-    btn.textContent = "Enviada";
+
+    // 🔄 LIMPIAR FORMULARIO
+    inputs.forEach(i => i.value = "");
+    textarea.value = "";
+
+    document.querySelectorAll('.stars span')
+      .forEach(s => s.classList.remove('active'));
+
+    document.querySelectorAll('.nps button')
+      .forEach(b => b.classList.remove('active'));
+
+    btn.disabled = false;
+    btn.textContent = "Enviar Encuesta";
 
   } catch (e) {
     alert("Error al enviar, intente nuevamente");
@@ -329,7 +343,6 @@ async function enviar() {
     btn.textContent = "Enviar Encuesta";
   }
 }
-
 // ⭐ contar estrellas
 function getStars(i) {
   return [...document.querySelectorAll('.stars')[i].children]
