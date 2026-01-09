@@ -175,6 +175,20 @@ footer {
   height: auto;
   display: block;
 }
+.nps-labels {
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  color:#9ca3af;
+  margin-top:6px;
+}
+
+@media (max-width: 640px) {
+  .nps-labels {
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
   .grid {
     grid-template-columns: 1fr;
@@ -189,10 +203,10 @@ footer {
   }
   @media (max-width: 640px) {
   input, textarea {
-    font-size: 16px; /* evita zoom automático en iOS */
-  }
+    font-size: 16px; 
 }
 }
+
 </style>
 </head>
 
@@ -256,7 +270,7 @@ footer {
   <div class="question">
     <h4>5. ¿Recomendaría nuestros servicios?</h4>
     <div class="nps" id="nps"></div>
-    <div style="display:flex;justify-content:space-between;font-size:12px;color:#9ca3af;">
+    <div class="nps-labels">
       <span>Poco probable</span>
       <span>Muy probable</span>
     </div>
