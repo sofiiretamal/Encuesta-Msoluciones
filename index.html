@@ -402,21 +402,30 @@ async function enviar() {
 
 if (!data.empresa) {
   mostrarError("Debe indicar la empresa", inputs[0]);
+  btn.disabled = false;
+  btn.textContent = "Enviar Encuesta";
   return;
 }
 
+
 if (!data.nombre) {
   mostrarError("Debe indicar su nombre", inputs[1]);
+  btn.disabled = false;
+  btn.textContent = "Enviar Encuesta";
   return;
 }
 
 if (!data.cargo) {
   mostrarError("Debe indicar su cargo", inputs[2]);
+  btn.disabled = false;
+  btn.textContent = "Enviar Encuesta";
   return;
 }
 
 if (!data.correo) {
   mostrarError("Debe indicar un correo electrónico", inputs[3]);
+  btn.disabled = false;
+  btn.textContent = "Enviar Encuesta";
   return;
 }
 
