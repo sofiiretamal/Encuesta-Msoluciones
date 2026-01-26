@@ -36,33 +36,11 @@ body {
   margin-bottom:32px;
 }
 
-.logo {
-  width:48px;
-  height:48px;
-  border:2px solid var(--green);
-  transform:rotate(45deg);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.logo span {
-  transform:rotate(-45deg);
-  color:var(--green);
-  font-weight:900;
-}
-
-.header h1 {
-  margin:0;
-  font-size:14px;
-  color:#16a34a;
-  letter-spacing:.08em;
-}
-
-.header h2 {
-  margin:0;
-  font-size:28px;
-  font-weight:900;
+.logo-img {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .card {
@@ -169,38 +147,6 @@ footer {
   color:#9ca3af;
   margin-top:24px;
 }
-.logo-img {
-  max-width: 320px;
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.nps-labels {
-  display:flex;
-  justify-content:space-between;
-  font-size:12px;
-  color:#9ca3af;
-  margin-top:6px;
-}
-
-@media (max-width: 640px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .container {
-    padding: 20px;
-  }
-
-  .card {
-    padding: 20px;
-  }
-
-  input, textarea {
-    font-size: 16px; /* evita zoom en iOS */
-  }
-}
-
 
 .error {
   border-color: #dc2626 !important;
@@ -213,13 +159,13 @@ footer {
   margin-top: 6px;
   font-weight: 600;
 }
+
 .success-text {
   color: #16a34a;
   font-size: 14px;
   font-weight: 700;
   margin-top: 12px;
 }
-
 </style>
 </head>
 
@@ -228,8 +174,8 @@ footer {
 <div class="container">
 
   <div class="header">
-  <img src="logo-msoluciones.png" alt="MSoluciones" class="logo-img">
-</div>
+    <img src="logo-msoluciones.png" alt="MSoluciones" class="logo-img">
+  </div>
 
   <div class="card">
     <h3>Datos del Cliente</h3>
@@ -256,57 +202,27 @@ footer {
   <h3>Evaluación del Servicio</h3>
   <p style="color:#6b7280;margin-bottom:16px;">Califique del 1 al 5 donde 1 es Muy Malo y 5 es Excelente</p>
 
-  <div class="question">
-    <h4>#1 Calidad del Servicio</h4>
-    <p>¿Cómo calificaría la calidad técnica del mantenimiento realizado?</p>
-    <div class="stars" data-q="q1"></div>
-  </div>
-  <div class="question">
-    <h4>#2 Cumplimiento de Requisitos</h4>
-    <p>¿El servicio cumplió con los requisitos establecidos?</p>
-    <div class="stars" data-q="q2"></div>
-  </div>
-  <div class="question">
-    <h4>#3 Entrega del Servicio</h4>
-    <p>¿El servicio se entregó de forma oportuna y puntual?</p>
-    <div class="stars" data-q="q2"></div>
-  </div>
-  <div class="question">
-    <h4>#4 Cumplimiento de Expectativas</h4>
-    <p>¿El servicio cumplió con sus expectativas?</p>
-    <div class="stars" data-q="qX"></div>
-  </div>
-  <div class="question">
-    <h4>#5 Personal Técnico</h4>
-    <p>¿Cómo evalúa el profesionalismo y conocimiento del personal?</p>
-    <div class="stars" data-q="q3"></div>
-  </div>
-  <div class="question">
-    <h4>#6 Resolución</h4>
-    <p>¿El servicio resolvió efectivamente la falla?</p>
-    <div class="stars" data-q="q4"></div>
-  </div>
+  <div class="question"><h4>#1 Calidad del Servicio</h4><p>¿Cómo calificaría la calidad técnica del mantenimiento realizado?</p><div class="stars"></div></div>
+  <div class="question"><h4>#2 Cumplimiento de Requisitos</h4><p>¿El servicio cumplió con los requisitos establecidos?</p><div class="stars"></div></div>
+  <div class="question"><h4>#3 Entrega del Servicio</h4><p>¿El servicio se entregó de forma oportuna y puntual?</p><div class="stars"></div></div>
+  <div class="question"><h4>#4 Cumplimiento de Expectativas</h4><p>¿El servicio cumplió con sus expectativas?</p><div class="stars"></div></div>
+  <div class="question"><h4>#5 Personal Técnico</h4><p>¿Cómo evalúa el profesionalismo y conocimiento del personal?</p><div class="stars"></div></div>
+  <div class="question"><h4>#6 Resolución</h4><p>¿El servicio resolvió efectivamente la falla?</p><div class="stars"></div></div>
 
   <div class="question">
     <h4>7. ¿Recomendaría nuestros servicios?</h4>
     <div class="nps" id="nps"></div>
-    <div class="nps-labels">
-      <span>Poco probable</span>
-      <span>Muy probable</span>
-    </div>
   </div>
 
   <div class="question">
     <label>Comentarios Adicionales (Opcional)</label>
-    <textarea rows="4" placeholder="¿Hay algo más que debamos saber para mejorar?"></textarea>
+    <textarea rows="4"></textarea>
   </div>
 
   <div id="mensajeError" class="error-text" style="display:none;"></div>
   <div id="mensajeSuccess" class="success-text" style="display:none;"></div>
 
-  <button class="send" id="btnEnviar" onclick="enviar()">
-  Enviar Encuesta
-  </button>
+  <button class="send" id="btnEnviar" onclick="enviar()">Enviar Encuesta</button>
 
   <footer>© 2026 SERVICIO Y MANTENCIONES MSOLUCIONES LTDA</footer>
 
@@ -338,29 +254,16 @@ for (let i = 1; i <= 10; i++) {
 }
 
 function limpiarErrores() {
-  document.querySelectorAll('.error').forEach(e =>
-    e.classList.remove('error')
-  );
-
-  const err = document.getElementById("mensajeError");
-  const ok = document.getElementById("mensajeSuccess");
-
-  err.style.display = "none";
-  err.textContent = "";
-
-  ok.style.display = "none";
-  ok.textContent = "";
+  document.querySelectorAll('.error').forEach(e => e.classList.remove('error'));
+  document.getElementById("mensajeError").style.display = "none";
+  document.getElementById("mensajeSuccess").style.display = "none";
 }
 
 function mostrarError(texto, elemento) {
   const msg = document.getElementById("mensajeError");
   msg.textContent = texto;
   msg.style.display = "block";
-
-  if (elemento) {
-    elemento.classList.add("error");
-    elemento.scrollIntoView({ behavior: "smooth", block: "center" });
-  }
+  if (elemento) elemento.classList.add("error");
 }
 
 function mostrarSuccess(texto) {
@@ -369,12 +272,21 @@ function mostrarSuccess(texto) {
   msg.style.display = "block";
 }
 
+function getStars(i) {
+  return [...document.querySelectorAll('.stars')[i].children]
+    .filter(s => s.classList.contains('active')).length;
+}
+
+function todasLasEstrellasRespondidas() {
+  for (let i = 0; i < 6; i++) {
+    if (getStars(i) === 0) return false;
+  }
+  return true;
+}
 
 async function enviar() {
   limpiarErrores();
-  const fechaActual = new Date().toISOString().split('T')[0];
   const btn = document.getElementById("btnEnviar");
-
   btn.disabled = true;
   btn.textContent = "Enviando…";
 
@@ -382,125 +294,51 @@ async function enviar() {
   const textarea = document.querySelector('textarea');
 
   const data = {
-    fecha: fechaActual,
     empresa: inputs[0].value,
     nombre: inputs[1].value,
     cargo: inputs[2].value,
     correo: inputs[3].value,
-
-    q1: getStars(0), // Calidad
-    q2: getStars(1), // Requisitos
-    q3: getStars(2), // Entrega
-    q4: getStars(3), // Expectativas
-    q5: getStars(4), // Personal
-    q6: getStars(5), // Resolución
-
+    q1: getStars(0),
+    q2: getStars(1),
+    q3: getStars(2),
+    q4: getStars(3),
+    q5: getStars(4),
+    q6: getStars(5),
     nps: document.querySelector('.nps .active')?.textContent || '',
     comentarios: textarea.value
   };
 
+  if (!data.empresa) return mostrarError("Debe indicar la empresa", inputs[0]);
+  if (!data.nombre) return mostrarError("Debe indicar su nombre", inputs[1]);
+  if (!data.cargo) return mostrarError("Debe indicar su cargo", inputs[2]);
+  if (!data.correo) return mostrarError("Debe indicar un correo electrónico", inputs[3]);
 
-if (!data.empresa) {
-  mostrarError("Debe indicar la empresa", inputs[0]);
-  return;
-}
-
-if (!data.nombre) {
-  mostrarError("Debe indicar su nombre", inputs[1]);
-  return;
-}
-
-if (!data.cargo) {
-  mostrarError("Debe indicar su cargo", inputs[2]);
-  return;
-}
-
-if (!data.correo) {
-  mostrarError("Debe indicar un correo electrónico", inputs[3]);
-  btn.disabled = false;
-  btn.textContent = "Enviar Encuesta";
-  return;
-}
-
-if (!data.correo.includes("@")) {
-  mostrarError("Debe indicar un correo electrónico válido", inputs[3]);
-  btn.disabled = false;
-  btn.textContent = "Enviar Encuesta";
-  return;
-}
-
-
-
-
-if (!todasLasEstrellasRespondidas()) {
-  const primera = document.querySelector('.stars:not(:has(.active))');
-  mostrarError("Debe responder todas las preguntas de evaluación", primera);
-  btn.disabled = false;
-  btn.textContent = "Enviar Encuesta";
-  return;
-}
-
-
-if (!data.nps) {
-  mostrarError(
-    "Debe indicar qué tan probable es que nos recomiende",
-    document.getElementById("nps")
-  );
-  btn.disabled = false;
-  btn.textContent = "Enviar Encuesta";
-  return;
-}
-
-
-
-  try {
-    await fetch("https://script.google.com/macros/s/AKfycbyzfIWTmXC_dPx73yR0iT2bLDqncfy1mmwQHxZF7rJ2uhhGai6cPj1vq2MFOfVXiX6O/exec", {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    });
-
-    mostrarSuccess("Gracias por responder la encuesta");
-
-    inputs.forEach(i => i.value = "");
-    textarea.value = "";
-
-    document.querySelectorAll('.stars span')
-      .forEach(s => s.classList.remove('active'));
-
-    document.querySelectorAll('.nps button')
-      .forEach(b => b.classList.remove('active'));
-
+  /* 🔒 VALIDACIÓN DEL @ */
+  if (!data.correo.includes("@")) {
+    mostrarError("Debe indicar un correo electrónico válido", inputs[3]);
     btn.disabled = false;
     btn.textContent = "Enviar Encuesta";
-
-  } catch (e) {
-    mostrarError("Error al enviar, intente nuevamente");
-    btn.disabled = false;
-    btn.textContent = "Enviar Encuesta";
+    return;
   }
 
-}
-const TOTAL_PREGUNTAS = 6;
-function getStars(i) {
-  return [...document.querySelectorAll('.stars')[i].children]
-    .filter(s => s.classList.contains('active')).length;
-}
-function todasLasEstrellasRespondidas() {
-  for (let i = 0; i < TOTAL_PREGUNTAS; i++) {
-    if (getStars(i) === 0) {
-      return false;
-    }
-  }
-  return true;
-}
+  if (!todasLasEstrellasRespondidas())
+    return mostrarError("Debe responder todas las preguntas de evaluación");
 
+  if (!data.nps)
+    return mostrarError("Debe indicar qué tan probable es que nos recomiende");
 
+  await fetch("https://script.google.com/macros/s/AKfycbyzfIWTmXC_dPx73yR0iT2bLDqncfy1mmwQHxZF7rJ2uhhGai6cPj1vq2MFOfVXiX6O/exec", {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
 
+  mostrarSuccess("Gracias por responder la encuesta");
+  btn.disabled = false;
+  btn.textContent = "Enviar Encuesta";
+}
 </script>
-
-
 
 </body>
 </html>
