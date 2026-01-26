@@ -417,8 +417,18 @@ if (!data.cargo) {
 
 if (!data.correo) {
   mostrarError("Debe indicar un correo electrónico", inputs[3]);
+  btn.disabled = false;
+  btn.textContent = "Enviar Encuesta";
   return;
 }
+
+if (!data.correo.includes("@")) {
+  mostrarError("Debe indicar un correo electrónico válido", inputs[3]);
+  btn.disabled = false;
+  btn.textContent = "Enviar Encuesta";
+  return;
+}
+
 
 
 
