@@ -440,7 +440,6 @@ if (!data.correo.includes("@")) {
 
 
 if (!todasLasEstrellasRespondidas()) {
-  const primera = document.querySelector('.stars:not(:has(.active))');
   mostrarError("Debe responder todas las preguntas de evaluación", primera);
   cancelarEnvio();
   return;
@@ -475,15 +474,6 @@ if (!data.nps) {
     document.querySelectorAll('.stars span')
       .forEach(s => s.classList.remove('active'));
     
-    document.querySelectorAll('.nps button')
-      .forEach(b => b.classList.remove('active'));
-
-    inputs.forEach(i => i.value = "");
-    textarea.value = "";
-
-    document.querySelectorAll('.stars span')
-      .forEach(s => s.classList.remove('active'));
-
     document.querySelectorAll('.nps button')
       .forEach(b => b.classList.remove('active'));
 
