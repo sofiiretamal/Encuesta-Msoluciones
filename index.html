@@ -285,14 +285,9 @@ footer {
     <p>¿Cómo evalúa el profesionalismo y conocimiento del personal?</p>
     <div class="stars" data-q="q3"></div>
   </div>
-  <div class="question">
-    <h4>#6 Resolución</h4>
-    <p>¿El servicio resolvió efectivamente la falla?</p>
-    <div class="stars" data-q="q4"></div>
-  </div>
 
   <div class="question">
-    <h4>7. ¿Recomendaría nuestros servicios?</h4>
+    <h4>6. ¿Recomendaría nuestros servicios?</h4>
     <div class="nps" id="nps"></div>
     <div class="nps-labels">
       <span>Poco probable</span>
@@ -402,7 +397,6 @@ async function enviar() {
     q3: getStars(2), // Entrega
     q4: getStars(3), // Expectativas
     q5: getStars(4), // Personal
-    q6: getStars(5), // Resolución
 
     nps: document.querySelector('.nps .active')?.textContent || '',
     comentarios: textarea.value
@@ -497,7 +491,7 @@ if (!data.nps) {
   }
 
 }
-const TOTAL_PREGUNTAS = 6;
+const TOTAL_PREGUNTAS = 5;
 function getStars(i) {
   return [...document.querySelectorAll('.stars')[i].children]
     .filter(s => s.classList.contains('active')).length;
